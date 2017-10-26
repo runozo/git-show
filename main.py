@@ -6,7 +6,7 @@ def get_commits():
     for row in ret.split(b'\n'):
         if row.startswith(b'commit'):
             commits.append(row.split()[1])
-    return commits
+    return list(reversed(commits))
 
 def get_diffs(comm1, comm2):
     ret = subprocess.check_output(["git", "diff", comm1, comm2])
